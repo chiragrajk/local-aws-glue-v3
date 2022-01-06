@@ -1,0 +1,15 @@
+services:
+  glue:
+    image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+    # user: "10000:root"
+    command: -c "/home/glue_user/jupyter/jupyter_start.sh"
+    ports:
+      - 8888:8888
+      - 4040:4040
+    environment:
+      DISABLE_SSL: 'true'
+    volumes:
+      # set owner 10000:root for the workspace with: `sudo chown -R 10000:root jupyter_workspace`
+      - "./jupyter_workspace:/home/glue_user/workspace/jupyter_workspace"
+
+    
